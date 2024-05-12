@@ -51,36 +51,10 @@ def plot_cdf_plots(columns_to_plot_dict, peak_metadata_df, full_lfc_df, baseline
 import pybedtools as pbt
 import os
 import sys
-sys.path.append('../../code')
-from motif_analysis import fimo_to_bed
 import pandas as pd
 from aux_functions import add_chr_to_bedtool, get_col
 import os
 
-def collect_from_fimo(motif_path, atac_peak_names, all_atac_peaks, motif_folder):
-    # print("Collecting")
-    motif_path_name = os.path.basename(motif_path)
-    _, motif_identity, motif_name = motif_path_name.lower().split("_")    
-    motif_col_name = f'{motif_name}_{motif_identity}'
-
-    fimo_tsv_path = f'./{motif_path}/fimo.tsv'
-    fimo_bedfile_path = f'motif_bedfiles/{motif_folder}/{motif_path_name}.bed'
-    os.makedirs(f'motif_bedfiles/{motif_folder}', exist_ok=True)
-    try:
-        fimo_to_bed(fimo_tsv_path, fimo_bedfile_path)
-    except:
-        motif_count_df = pd.DataFrame()  
-        motif_count_df.index = atac_peak_names
-        motif_count_df[motif_col_name] = 0   
-        return motif_count_df
-    motif_counts = pbt.BedTool(fimo_bedfile_path)
-    counts = get_col(all_atac_peaks.intersect(motif_counts, c=True), -1).astype(float)
-    motif_count_df = pd.DataFrame()
-    motif_count_df[motif_col_name] = counts
-    motif_count_df.index = atac_peak_names
-    # print("Done Collecting")
-    
-    return motif_count_df
 
 import pandas as pd
 from collections import defaultdict

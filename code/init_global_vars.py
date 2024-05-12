@@ -17,11 +17,7 @@ sys.path.append('../../code/')
 sys.path.append('./code/')
 
 from init_bulk_RNA import *
-from init_bulk_ChIP import *
-from init_bulk_ATAC import *
 from aux_functions_scRNA import *
-# from old_make_figures import *
-from get_lfcs import generate_lfcs
 
 PARSED_CHROMS = {'chr1', 'chr2', 'chr3', 'chr4', 'chr5', 'chr6', 'chr7', 'chr8', 'chr9', 'chr10', 
                  'chr11', 'chr12', 'chr13', 'chr14', 'chr15', 'chr16', 'chr17', 'chr18', 'chr19', 'chrX'}
@@ -32,3 +28,6 @@ PARSED_CHROMS_nochr = {
 import bbi 
 import pybedtools as pbt
 from aux_functions import *
+
+foxp3_peaks_konopacki = pbt.BedTool('peaks/peaks_konopacki.txt')
+atac_peak_bedtool = pbt.BedTool('./peaks/atac_Treg_actv_vs_Treg_rest_thresh=0.csv')
