@@ -6,7 +6,7 @@ This repository contains a collection of Jupyter notebooks and associated datase
 
 ## 📁 Repository Structure
 
-The repository is organized into **single-cell** and **bulk transcriptomics** components, each addressing a distinct experimental context.
+The repository is organized into **single-cell**, **bulk transcriptomics**, and **shared utility code**, each addressing a distinct role in the analysis workflow.
 
 ### 🔬 Single-Cell RNA-seq Analyses
 
@@ -33,6 +33,18 @@ Bulk RNA-seq analyses include both newly generated and reanalyzed datasets:
 
 - `bulk_rna_data/`  
   Contains gene expression matrices, differential expression analyses, and metadata relevant to Foxp3 degradation experiments.
+
+---
+
+### 🧰 Reusable Functions and Utilities
+
+- `code/`  
+  A collection of shared functions and modules used across the notebooks, including:
+  - Data loading and preprocessing utilities  
+  - Plotting functions  
+  - Statistical tests and helper methods
+
+These utilities ensure modularity and reproducibility across the analysis workflows.
 
 ---
 
